@@ -233,7 +233,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const loadingIndicator = addMessageToChat('ai', 'loading');
 
         // IMPORTANT: Add your Google AI API key here for the chatbot to work on a live site.
-        const apiKey = "YOUR_API_KEY_HERE"; 
+        const apiKey = "AIzaSyBAHVpzXVuSvmX1Xr5Vr8LpzdZlWraj_x0"; 
 
         try {
              if (apiKey === "AIzaSyBAHVpzXVuSvmX1Xr5Vr8LpzdZlWraj_x0") {
