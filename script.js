@@ -232,12 +232,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const loadingIndicator = addMessageToChat('ai', 'loading');
 
+        // IMPORTANT: Add your Google AI API key here for the chatbot to work on a live site.
+        const apiKey = "YOUR_API_KEY_HERE"; 
+
         try {
+             if (apiKey === "YOUR_API_KEY_HERE") {
+                throw new Error("API key not set. Please add your key to script.js");
+            }
+
             const currentLesson = lessons[currentSlide];
             const prompt = `You are a friendly and helpful AI programming instructor for a beginner. The student is currently in a lesson titled "${currentLesson.title}" with the objective: "${currentLesson.objective}". Please answer the student's question concisely and clearly based on this context. Student's question: "${userInput}"`;
             const chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
             const payload = { contents: chatHistory };
-            const apiKey = "";
+            
             const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
             const response = await fetch(apiUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
 
@@ -252,7 +259,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         } catch (error) {
             console.error("Error fetching from Gemini API:", error);
-            loadingIndicator.querySelector('p').textContent = "An error occurred. Please check the console and try again.";
+            loadingIndicator.querySelector('p').textContent = "An error occurred. Please check the console and try again. Make sure your API key is set in script.js.";
         } finally {
             chatForm.querySelector('button').disabled = false;
             chatInput.focus();
