@@ -233,13 +233,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const loadingIndicator = addMessageToChat('ai', 'loading');
 
         // IMPORTANT: Add your Google AI API key here for the chatbot to work on a live site.
-        const apiKey = "AIzaSyBAHVpzXVuSvmX1Xr5Vr8LpzdZlWraj_x0"; 
+        const apiKey = "AIzaSyBAHVpzXVuSvmX1Xr5Vr8LpzdZlWraj_x0";
 
         try {
-             if (apiKey === "AIzaSyBAHVpzXVuSvmX1Xr5Vr8LpzdZlWraj_x0") {
+            if (apiKey === "YOUR_API_KEY_HERE") {
                 throw new Error("API key not set. Please add your key to script.js");
             }
-
+            
             const currentLesson = lessons[currentSlide];
             const prompt = `You are a friendly and helpful AI programming instructor for a beginner. The student is currently in a lesson titled "${currentLesson.title}" with the objective: "${currentLesson.objective}". Please answer the student's question concisely and clearly based on this context. Student's question: "${userInput}"`;
             const chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
