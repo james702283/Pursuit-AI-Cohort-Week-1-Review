@@ -53,16 +53,69 @@ body {
     background: rgba(14, 165, 233, 0.7);
 }
 
-.ai-chat-bubble, .ai-chat-window { z-index: 50; }
-.ai-chat-bubble { position: fixed; bottom: 2rem; right: 2rem; }
-.ai-chat-window {
-    position: fixed; bottom: 6rem; right: 2rem;
-    width: 90%; max-width: 400px; height: 70vh; max-height: 500px;
-    transform: translateY(20px) scale(0.95); opacity: 0; pointer-events: none;
-    transition: transform 0.3s ease, opacity 0.3s ease;
+.ai-chat-bubble {
+    position: fixed;
+    bottom: 5rem; /* Raised position for small screens */
+    right: 1rem;
+    z-index: 50;
 }
-.ai-chat-window.visible { transform: translateY(0) scale(1); opacity: 1; pointer-events: auto; }
+.ai-chat-window {
+    position: fixed;
+    bottom: 9.5rem; /* Positioned above the raised bubble */
+    right: 1rem;
+    width: 90%;
+    max-width: 400px;
+    height: 70vh;
+    max-height: 500px;
+    transform: translateY(20px) scale(0.95);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    z-index: 50;
+}
+
+/* Revert to original position on larger screens */
+@media (min-width: 768px) {
+    .ai-chat-bubble {
+        bottom: 2rem;
+        right: 2rem;
+    }
+    .ai-chat-window {
+        bottom: 6rem;
+        right: 2rem;
+    }
+}
+
+.ai-chat-window.visible {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+    pointer-events: auto;
+}
+
 #chat-messages::-webkit-scrollbar { width: 4px; }
 #chat-messages::-webkit-scrollbar-thumb { background-color: rgba(255, 255, 255, 0.2); border-radius: 2px; }
-.loader { width: 1rem; height: 1rem; border: 2px solid #f3f3f3; border-top: 2px solid #38bdf8; border-radius: 50%; animation: spin 1s linear infinite; }
-@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+.loader {
+    width: 1rem;
+    height: 1rem;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid #38bdf8;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.chat-button-theme {
+    background-color: #1d2c38;
+}
+.chat-button-theme:hover {
+    background-color: #2a4152;
+}
+
+.user-message-bubble {
+    background-color: #1d2c38;
+}
