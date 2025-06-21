@@ -236,7 +236,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const apiKey = "YOUR_API_KEY_HERE"; 
 
         try {
-             if (apiKey === "YOUR_API_KEY_HERE") {
+             if (apiKey === "AIzaSyBAHVpzXVuSvmX1Xr5Vr8LpzdZlWraj_x0") {
                 throw new Error("API key not set. Please add your key to script.js");
             }
 
