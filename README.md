@@ -17,17 +17,33 @@ This is an interactive web-based lesson plan designed to review the foundational
 
 ## How to Deploy
 
-You can easily deploy this application for free using GitHub Pages.
+You can easily deploy this application for free using **Netlify** or **GitHub Pages**.
 
-1.  **Create a GitHub Repository:** If you haven't already, create a new public repository on GitHub. Name it whatever you like (e.g., `pursuit-ai-week1-review`).
+1.  **Create a GitHub Repository:** If you have not already, create a new public repository on GitHub.
 2.  **Upload the Files:** Add the `index.html`, `style.css`, and `script.js` files to your new repository.
-3.  **Enable GitHub Pages:**
-    - In your repository, go to the **Settings** tab.
-    - In the left sidebar, click on **Pages**.
-    - Under the "Branch" section, select the branch your code is on (usually `main` or `master`).
-    - Leave the folder as `/ (root)`.
-    - Click **Save**.
-4.  **Access Your Site:** GitHub will take a minute or two to build and deploy your site. Once it's ready, you will see a green bar with the URL of your live site at the top of the Pages settings. It will look something like this:
-    `https://your-username.github.io/your-repository-name/`
+3.  **Deploy using your preferred service.**
 
-That's it! Your interactive lesson plan is now live and accessible to anyone with the link.
+## IMPORTANT: Enabling the AI Assistant
+
+For the AI Assistant to work on your live website, you must provide it with a free Google AI API Key.
+
+**Step 1: Get Your API Key**
+
+1.  Go to **Google AI Studio**: [https://aistudio.google.com/](https://aistudio.google.com/)
+2.  Sign in with your Google account.
+3.  Click the **"Get API key"** button in the top left.
+4.  In the pop-up window, click **"Create API key in new project"**.
+5.  Your key will be generated. Click the copy icon to copy it to your clipboard.
+
+**Step 2: Add the Key to Your Code**
+
+1.  In your code editor, open the `script.js` file.
+2.  Find the following line (it should be near line 316):
+    ```javascript
+    const apiKey = "YOUR_API_KEY_HERE"; 
+    ```
+3.  Replace `"YOUR_API_KEY_HERE"` with the key you just copied from Google AI Studio. Make sure to keep the quotation marks. It should look like this:
+    ```javascript
+    const apiKey = "AIzaSyB...your...long...key...here"; 
+    ```
+4.  Save the `script.js` file and push the change to your GitHub repository. Your deployment service (Netlify or GitHub Pages) will automatically update, and the AI Assistant will now be fully functional.
