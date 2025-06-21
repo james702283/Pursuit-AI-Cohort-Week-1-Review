@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             title: 'Week 1 Wrap-Up: Your New Developer Toolkit',
             objective: "Recognize the powerful, real-world skills you have developed this week.",
-            backgroundImage: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2070&auto=format&fit=crop",
+            backgroundImage: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop",
             activities: [
                 { title: "How Far You Have Come", content: `<h3 class="text-xl font-bold text-white mb-2">From Zero to Coder in One Week</h3><p class="text-gray-300 mb-4">Think back to the start of this week. You began by simply talking to an AI. Now, you have directed an AI to build, modify, and debug a custom Python application. You have transformed from a user of technology into a creator.</p>` },
                 { title: "The Real Skills You Have Developed", content: `<h3 class="text-xl font-bold text-white mb-2">Your New Professional Skills</h3><p class="text-gray-300 mb-4">This week was about more than just code. You have developed a set of skills that are in high demand in the tech industry:</p><ul class="list-disc list-inside mt-2 text-gray-300 space-y-2"><li><strong>Prompt Engineering:</strong> You can now craft precise instructions to get the output you want from an AI.</li><li><strong>AI-Assisted Debugging:</strong> You know how to use an AI as a partner to diagnose and solve code errors.</li><li><strong>Technical Communication:</strong> You have practiced explaining complex topics to different audiences.</li><li><strong>Version Control Basics:</strong> You have started using GitHub, the industry-standard tool for managing code.</li><li><strong>Core Programming Concepts:</strong> You have implemented variables, user input, and conditional (if/else) logic.</li></ul>` },
@@ -261,6 +261,3 @@ document.addEventListener('DOMContentLoaded', () => {
     
     renderSlide();
 });
-</script>
-</body>
-</html>
