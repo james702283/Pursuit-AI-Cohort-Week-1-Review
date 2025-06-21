@@ -210,7 +210,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let content = '';
         if (sender === 'user') {
             messageEl.className = 'flex items-start gap-2.5 justify-end';
-            content = `<div class="flex flex-col w-full max-w-[320px] leading-1.5 p-4 bg-sky-600 rounded-s-xl rounded-ee-xl"><p class="text-sm font-normal text-white">${text}</p></div>`;
+            content = `<div class="user-message-bubble flex flex-col w-full max-w-[320px] leading-1.5 p-4 rounded-s-xl rounded-ee-xl"><p class="text-sm font-normal text-white">${text}</p></div>`;
         } else {
             messageEl.className = 'flex items-start gap-2.5';
             content = `<div class="flex flex-col w-full max-w-[320px] leading-1.5 p-4 bg-gray-100/10 rounded-e-xl rounded-es-xl"><p class="text-sm font-normal text-white/90">${text === 'loading' ? '<div class="loader"></div>' : text}</p></div>`;
@@ -232,12 +232,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const loadingIndicator = addMessageToChat('ai', 'loading');
 
-        // IMPORTANT: Add your Google AI API key here for the chatbot to work on a live site.
         const apiKey = "AIzaSyBAHVpzXVuSvmX1Xr5Vr8LpzdZlWraj_x0";
 
         try {
-            if (apiKey === "YOUR_API_KEY_HERE") {
-                throw new Error("API key not set. Please add your key to script.js");
+            if (!apiKey || apiKey === "YOUR_API_KEY_HERE") {
+                throw new Error("API key not set. Please add your key to script.js and authorize it in Google Cloud.");
             }
             
             const currentLesson = lessons[currentSlide];
@@ -248,7 +247,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
             const response = await fetch(apiUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
 
-            if (!response.ok) throw new Error(`API error: ${response.statusText}`);
+            if (!response.ok) {
+                const errorData = await response.json();
+                console.error("API Error Response:", errorData);
+                throw new Error(`API error: ${response.statusText}`);
+            }
 
             const result = await response.json();
             let aiResponseText = "Sorry, I could not get a response. Please try again.";
@@ -259,7 +262,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         } catch (error) {
             console.error("Error fetching from Gemini API:", error);
-            loadingIndicator.querySelector('p').textContent = "An error occurred. Please check the console and try again. Make sure your API key is set in script.js.";
+            loadingIndicator.querySelector('p').textContent = "An error occurred. Please check the console and try again. Make sure your API key is set correctly and authorized in Google Cloud.";
         } finally {
             chatForm.querySelector('button').disabled = false;
             chatInput.focus();
